@@ -1,0 +1,17 @@
+<h1>{{ student.kafedra }} {{ student.grupa }}</h1>
+<mat-card *ngFor="let den of rozklad">
+  <mat-card-title>{{ den.name }}</mat-card-title>
+  <mat-card-content>
+    <div class="item" *ngFor="let para of den.pary">
+      <div class="para">
+        {{ para.para }}
+        <small>{{ para.para | lessonHours: "starts" }}</small>
+        <small>{{ para.para | lessonHours: "ends" }}</small>
+      </div>
+      <div class="predmet">{{ para.predmet }}</div>
+      <div class="vykladach">{{ para.vykladach }}</div>
+      <div class="audytoriya">{{ para.audytoriya }}</div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<button mat-button (click)="goBack()">Назад</button>

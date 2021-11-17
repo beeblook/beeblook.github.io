@@ -1,0 +1,16 @@
+:host {
+  flex: 1 1 100%;
+}
+
+button {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.loading {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

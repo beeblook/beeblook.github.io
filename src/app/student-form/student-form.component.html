@@ -1,0 +1,90 @@
+<div class="loading" *ngIf="!fakultety">
+  <h4 color="primary">Завантажуються дані</h4>
+  <mat-spinner color="primary"></mat-spinner>
+</div>
+
+<mat-card *ngIf="fakultety && !answers.fakultet">
+  <mat-card-title>Обери факультет</mat-card-title>
+  <mat-card-content>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      *ngFor="let fakultet of fakultety"
+      (click)="onFakultetSelect(fakultet)"
+    >
+      {{ fakultet.name }}
+    </button>
+  </mat-card-content>
+  <mat-card-actions
+    ><button mat-button (click)="goBackToMain()">
+      Назад
+    </button></mat-card-actions
+  >
+</mat-card>
+
+<mat-card *ngIf="answers.fakultet && !answers.kafedra">
+  <mat-card-subtitle>{{ answers.fakultet.name }}</mat-card-subtitle>
+  <mat-card-title>Обери кафедру</mat-card-title>
+  <mat-card-content>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      *ngFor="let kafedra of answers.fakultet.kafedry"
+      (click)="onKafedraSelect(kafedra)"
+    >
+      {{ kafedra.name }}
+    </button>
+  </mat-card-content>
+  <mat-card-actions
+    ><button mat-button (click)="goBackToFakultety()">
+      Назад
+    </button></mat-card-actions
+  >
+</mat-card>
+<mat-card *ngIf="answers.kafedra && !answers.kurs">
+  <mat-card-subtitle
+    >{{ answers.fakultet.name }} / {{ answers.kafedra.name }}</mat-card-subtitle
+  >
+  <mat-card-title>Обери курс</mat-card-title>
+  <mat-card-content>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      *ngFor="let kurs of answers.kafedra.kursy"
+      (click)="onKursSelect(kurs)"
+    >
+      {{ kurs.name }}
+    </button>
+  </mat-card-content>
+  <mat-card-actions
+    ><button mat-button (click)="goBackToKafedry()">
+      Назад
+    </button></mat-card-actions
+  >
+</mat-card>
+<mat-card *ngIf="answers.kurs && !answers.grupa">
+  <mat-card-subtitle
+    >{{ answers.fakultet.name }} / {{ answers.kafedra.name }} /
+    {{ answers.kurs.name }}</mat-card-subtitle
+  >
+  <mat-card-title>Обери групу</mat-card-title>
+  <mat-card-content>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      *ngFor="let grupa of answers.kurs.grupy"
+      (click)="onGrupaSelect(grupa)"
+    >
+      {{ grupa.name }}
+    </button>
+  </mat-card-content>
+  <mat-card-actions
+    ><button mat-button (click)="goBackToKursy()">
+      Назад
+    </button></mat-card-actions
+  >
+</mat-card>
